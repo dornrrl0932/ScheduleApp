@@ -1,8 +1,7 @@
 package org.example.scheduleapp.schedule.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.example.scheduleapp.user.entity.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,6 +12,9 @@ import java.time.LocalDateTime;
 public class schedule {
 
     @Id //기본 키를 설정
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동으로 기본 키 값이 증가하도록 설정
+    private Long id;
+
     private String writer;
 
     @Column(nullable = false) //반드시 값을 가져야 한다. 필수값!
@@ -26,6 +28,10 @@ public class schedule {
 
     @LastModifiedDate //수정된 시간을 자동으로 기록
     private LocalDateTime modifyDateTime;
+
+    @ManyToOne //이 필드는 다대일 관계
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }
