@@ -29,6 +29,7 @@ public class Schedule {
 
     @CreatedDate //생성된 시간을 자동 기록
     @Column(updatable = false) // 데이터를 저장한 후 값이 변경되지 않게 만듦
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createDateTime;
 
     @LastModifiedDate //수정된 시간을 자동으로 기록

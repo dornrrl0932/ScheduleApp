@@ -1,15 +1,14 @@
 package org.example.scheduleapp.schedule.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 /*
-할 일 생성 완료 시 응답할 데이터
+할 일 생성 완료 후 응답할 데이터
  */
 @Getter
-public class TodoCreateResponseDto {
+public class TodoResponseDto {
 
     private final Long id;
     private final String writer;
@@ -17,7 +16,7 @@ public class TodoCreateResponseDto {
     private final String workTodo;
     private final LocalDateTime createDateTime;
 
-    public TodoCreateResponseDto(Long id, String writer, String title, String workTodo, LocalDateTime createDateTime) {
+    public TodoResponseDto(Long id, String writer, String title, String workTodo, LocalDateTime createDateTime) {
         this.id = id;
         this.writer = writer;
         this.title = title;
