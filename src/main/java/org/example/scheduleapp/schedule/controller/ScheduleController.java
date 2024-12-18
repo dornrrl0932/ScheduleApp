@@ -32,7 +32,9 @@ public class ScheduleController {
     @PostMapping
     public ResponseEntity<TodoResponseDto>createTodo(@RequestBody TodoCreateRequestDto requestDto) {
 
-        return new ResponseEntity<>(scheduleService.createTodo(requestDto), HttpStatus.CREATED);
+        TodoResponseDto todoResponseDto = scheduleService.createTodo(requestDto);
+
+        return new ResponseEntity<>(todoResponseDto, HttpStatus.CREATED);
     }
 
 
@@ -48,14 +50,14 @@ public class ScheduleController {
         return new ResponseEntity<>(todoResponseDtoList,HttpStatus.OK);
     }
 
-    /*
-    할 일 단건 조회
-     */
-    @GetMapping("/id/{id}")
-    public ResponseEntity<TodoResponseDto> findById (@PathVariable Long id) {
-
-        TodoResponseDto todoResponseDto = scheduleService.findById(id);
-
-        return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
-    }
+//    /*
+//    할 일 단건 조회
+//     */
+//    @GetMapping("/id/{id}")
+//    public ResponseEntity<TodoResponseDto> findById (@PathVariable Long id) {
+//
+//        TodoResponseDto todoResponseDto = scheduleService.findById(id);
+//
+//        return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
+//    }
 }
