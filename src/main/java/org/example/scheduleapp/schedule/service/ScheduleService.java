@@ -8,6 +8,7 @@ import org.example.scheduleapp.schedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,14 +57,15 @@ public class ScheduleService {
         return todoResponseDtos;
     }
 
-//    /*
-//    할 일 단건 조회
-//     */
-//    public TodoResponseDto findById(Long id) {
-//
-//        ScheduleRepository.find
-//
-//    }
+    /*
+    할 일 단건 조회
+     */
+    public TodoResponseDto findById(Long id) {
+
+        Schedule idOrElseThrow = scheduleRepository.findByIdOrElseThrow(id);
+
+        return new TodoResponseDto(idOrElseThrow.getId(), idOrElseThrow.getWriter(), idOrElseThrow.getTitle(), idOrElseThrow.getWorkTodo(), idOrElseThrow.getCreateDateTime());
+    }
 }
 
 
