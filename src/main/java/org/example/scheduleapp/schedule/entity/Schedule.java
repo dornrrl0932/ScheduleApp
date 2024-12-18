@@ -3,6 +3,7 @@ package org.example.scheduleapp.schedule.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 import org.example.scheduleapp.user.entity.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 
 //작성 유저명, 할일 제목, 할일 내용, 작성일, 수정일
 @Getter
+@Setter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 public class Schedule {
@@ -50,6 +52,9 @@ public class Schedule {
         this.workTodo = workTodo;
     }
 
-
+    public void updateTodo (String title, String workTodo){
+        this.title = title;
+        this.workTodo = workTodo;
+    }
 
 }

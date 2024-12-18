@@ -3,6 +3,8 @@ package org.example.scheduleapp.schedule.service;
 import lombok.RequiredArgsConstructor;
 import org.example.scheduleapp.schedule.dto.TodoCreateRequestDto;
 import org.example.scheduleapp.schedule.dto.TodoResponseDto;
+import org.example.scheduleapp.schedule.dto.TodoUpdateRequestDto;
+import org.example.scheduleapp.schedule.dto.TodoUpdateResponseDto;
 import org.example.scheduleapp.schedule.entity.Schedule;
 import org.example.scheduleapp.schedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
@@ -67,6 +69,28 @@ public class ScheduleService {
         return new TodoResponseDto(idOrElseThrow.getId(), idOrElseThrow.getWriter(), idOrElseThrow.getTitle(), idOrElseThrow.getWorkTodo(), idOrElseThrow.getCreateDateTime());
     }
 
+    /*
+    일정 수정(제목, 할일 내용)
+     */
+    public TodoUpdateResponseDto updateTodo(Long id, String title, String workTodo) {
+
+        //id로 Schedule 찾아오기
+        Optional<Schedule> updateSchedule = scheduleRepository.findById(id);
+
+        return updateSchedule
+                .map(schedule -> {
+                    schedule.setTitle(title);
+                    schedule.setWorkTodo(workTodo);
+                    scheduleRepository.save(schedule);
+                    return new TodoUpdateResponseDto(schedule.getId(), schedule.getWriter(), schedule.getTitle(), schedule.getWorkTodo(), schedule.getCreateDateTime(), schedule.getModifyDateTime());
+                })
+                .orElseThrow(() -> new RuntimeException("ID가 존재하지 않습니다. = " + id));
+    }
+
+
+    /*
+    일정 삭제
+     */
     public void deleteTodo(Long id) {
 
         scheduleRepository.deleteById(id);

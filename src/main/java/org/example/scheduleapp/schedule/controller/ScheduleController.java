@@ -2,6 +2,8 @@ package org.example.scheduleapp.schedule.controller;
 
 import org.example.scheduleapp.schedule.dto.TodoCreateRequestDto;
 import org.example.scheduleapp.schedule.dto.TodoResponseDto;
+import org.example.scheduleapp.schedule.dto.TodoUpdateRequestDto;
+import org.example.scheduleapp.schedule.dto.TodoUpdateResponseDto;
 import org.example.scheduleapp.schedule.service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +64,21 @@ public class ScheduleController {
     }
 
 
+    /*
+    할 일 수정(제목, 할 일 내용)
+     */
+    @PatchMapping("/id/{id}")
+    public ResponseEntity<TodoUpdateResponseDto>updateTodo(@PathVariable Long id, @RequestBody TodoUpdateRequestDto todoUpdateRequestDto) {
+
+        //id와 title, workTodo를 매개변수로 받는 scheduleService.updateTodo 호출 -> todoResponseDto를 전달
+        TodoUpdateResponseDto todoUpdateResponseDto = scheduleService.updateTodo(id, todoUpdateRequestDto.getTitle(), todoUpdateRequestDto.getWorkTodo());
+
+        return new ResponseEntity<>(todoUpdateResponseDto,HttpStatus.CREATED);
+    }
+
+    /*
+    일정 삭제
+     */
     @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
 
