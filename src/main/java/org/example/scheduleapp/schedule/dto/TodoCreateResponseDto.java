@@ -16,14 +16,12 @@ public class TodoCreateResponseDto {
     private final String title;
     private final String workTodo;
     private final LocalDateTime createDateTime;
-    private final LocalDateTime modifyDateTime;
 
-    public TodoCreateResponseDto(Long id, String writer, String title, String workTodo, LocalDateTime createDateTime, LocalDateTime modifyDateTime) {
+    public TodoCreateResponseDto(Long id, String writer, String title, String workTodo, LocalDateTime createDateTime) {
         this.id = id;
         this.writer = writer;
         this.title = title;
         this.workTodo = workTodo;
         this.createDateTime = createDateTime;
-        this.modifyDateTime = modifyDateTime;
     }
 }

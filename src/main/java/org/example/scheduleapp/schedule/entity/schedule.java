@@ -1,15 +1,20 @@
 package org.example.scheduleapp.schedule.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.example.scheduleapp.user.entity.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 //작성 유저명, 할일 제목, 할일 내용, 작성일, 수정일
+@Getter
 @Entity
-public class schedule {
+@EntityListeners(AuditingEntityListener.class)
+public class Schedule {
 
     @Id //기본 키를 설정
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동으로 기본 키 값이 증가하도록 설정
@@ -32,6 +37,18 @@ public class schedule {
     @ManyToOne //이 필드는 다대일 관계
     @JoinColumn(name = "user_id")
     private User user;
+
+    //엔티티는 기본 생성자를 필수로 가져야 한다.
+    public Schedule () {
+
+    }
+
+    public Schedule (String writer, String title, String workTodo) {
+        this.writer = writer;
+        this.title = title;
+        this.workTodo = workTodo;
+    }
+
 
 
 }

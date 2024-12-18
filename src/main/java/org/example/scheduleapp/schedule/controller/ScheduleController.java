@@ -31,7 +31,7 @@ public class ScheduleController {
     할 일 생성
      */
     @PostMapping
-    public ResponseEntity<TodoCreateRequestDto>createTodo (@RequestBody TodoCreateRequestDto requestDto) {
+    public ResponseEntity<TodoCreateResponseDto>createTodo(@RequestBody TodoCreateRequestDto requestDto) {
 
         return new ResponseEntity<>(scheduleServise.createTodo(requestDto), HttpStatus.CREATED);
     }

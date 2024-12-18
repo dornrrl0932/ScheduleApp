@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 @Getter
 public class TodoCreateRequestDto {
 
+    private String writer;
     private final String title;
     private final String workTodo;
-    private final String username;
 
-    public TodoCreateRequestDto(String title, String workTodo, String username) {
+    public TodoCreateRequestDto(String writer, String title, String workTodo) {
+        this.writer = writer;
         this.title = title;
         this.workTodo = workTodo;
-        this.username = username;
     }
 }
