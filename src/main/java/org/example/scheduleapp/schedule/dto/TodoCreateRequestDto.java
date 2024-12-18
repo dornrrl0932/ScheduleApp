@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 public class TodoCreateRequestDto {
 
-    private String writer;
+    private final String writer;
     private final String title;
     private final String workTodo;
 
