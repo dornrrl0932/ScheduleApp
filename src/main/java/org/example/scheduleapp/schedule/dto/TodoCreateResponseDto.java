@@ -9,13 +9,21 @@ import java.time.LocalDateTime;
 할 일 생성 완료 시 응답할 데이터
  */
 @Getter
-@AllArgsConstructor // 전체 필드를 가진 생성자 추가
 public class TodoCreateResponseDto {
 
-    private Long id;
-    private String writer;
-    private String title;
-    private String workTodo;
-    private LocalDateTime createDateTime;
-    private LocalDateTime modifyDateTime;
+    private final Long id;
+    private final String writer;
+    private final String title;
+    private final String workTodo;
+    private final LocalDateTime createDateTime;
+    private final LocalDateTime modifyDateTime;
+
+    public TodoCreateResponseDto(Long id, String writer, String title, String workTodo, LocalDateTime createDateTime, LocalDateTime modifyDateTime) {
+        this.id = id;
+        this.writer = writer;
+        this.title = title;
+        this.workTodo = workTodo;
+        this.createDateTime = createDateTime;
+        this.modifyDateTime = modifyDateTime;
+    }
 }
