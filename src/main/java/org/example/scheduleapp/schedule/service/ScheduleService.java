@@ -66,6 +66,11 @@ public class ScheduleService {
 
         return new TodoResponseDto(idOrElseThrow.getId(), idOrElseThrow.getWriter(), idOrElseThrow.getTitle(), idOrElseThrow.getWorkTodo(), idOrElseThrow.getCreateDateTime());
     }
+
+    public void deleteTodo(Long id) {
+
+        scheduleRepository.deleteById(id);
+    }
 }
 
 

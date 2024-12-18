@@ -54,10 +54,19 @@ public class ScheduleController {
     할 일 단건 조회
      */
     @GetMapping("/id/{id}")
-    public ResponseEntity<TodoResponseDto> findById (@PathVariable Long id) {
+    public ResponseEntity<TodoResponseDto> findById(@PathVariable Long id) {
 
         TodoResponseDto todoResponseDto = scheduleService.findById(id);
 
         return new ResponseEntity<>(todoResponseDto, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
+
+        scheduleService.deleteTodo(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
