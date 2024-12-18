@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 할 일 생성 완료 시 응답할 데이터
  */
 @Getter
-@AllArgsConstructor // 전체 필드를 가진 생성자 추가ㄴ
+@AllArgsConstructor // 전체 필드를 가진 생성자 추가
 public class TodoCreateResponseDto {
 
     private Long id;
