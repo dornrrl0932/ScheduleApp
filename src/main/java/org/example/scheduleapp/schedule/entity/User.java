@@ -1,8 +1,7 @@
-package org.example.scheduleapp.user.entity;
+package org.example.scheduleapp.schedule.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 
