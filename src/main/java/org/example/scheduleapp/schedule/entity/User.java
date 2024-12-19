@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 
-
+//유저명, 이메일, 작성일
 @Getter
 @Entity //데이터 베이스 테이블과 매핑, JPA Entity임을 선언
 @EntityListeners(AutoCloseable.class) // 자동으로 날짜를 기록
@@ -24,4 +24,16 @@ public class User {
     private LocalDateTime createDateTime;
 
     private Long password;
+
+    //기본 생성자
+    public User() {
+
+    }
+
+    public User (String userName, String email, Long password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+
 }
