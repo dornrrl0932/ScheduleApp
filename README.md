@@ -6,7 +6,7 @@ API 명세서
 | 일정 생성|POST|/todos|요청 body|등록정보|201 Created|
 | 일정 전체 조회|GET|/todos|요청 param|전체 할 일 등록정보|200 OK|
 | 일정 단건 조회|GET|/todos/id/{id}|요청 param|단 건 등록정보|200 OK|
-| 일정 단건 수정|PATCH|/todos/id/{id}|요청 param, 요청 body|수정 된 정보|201 Created|
+| 일정 단건 수정|PATCH|/todos/id/{id}|요청 body|수정 된 정보|201 Created|
 | 일정 단건 삭제|DELETE|/todos/{id}|요청 body|없음|200 OK|
 
 <br>
@@ -16,7 +16,7 @@ API 명세서
 |------|--------|-----|---------|----------|------------|
 | 회원 생성|POST|/users/signup|요청 body|등록정보|201 Created|
 | 회원 조회|GET|/users/id/{id}|요청 param|회원 등록정보|200 OK|
-| 회원 정보 수정(이름, 이메일)|PATCH|/users/id/{id}|요청 param, 요청 body|수정 된 정보|201 Created|
+| 회원 정보 수정(이름, 이메일)|PATCH|/users/id/{id}|요청 body|수정 된 정보|201 Created|
 | 회원 삭제|DELETE|/users/id/{id}|요청 body|없음|200 OK|
 
 <br>
