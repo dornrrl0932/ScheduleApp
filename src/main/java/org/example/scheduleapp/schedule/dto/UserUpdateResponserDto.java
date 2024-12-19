@@ -1,9 +1,6 @@
 package org.example.scheduleapp.schedule.dto;
 
 import lombok.Getter;
-import org.springframework.cglib.core.Local;
-
-import java.time.LocalDateTime;
 
 @Getter
 public class UserUpdateResponserDto {
