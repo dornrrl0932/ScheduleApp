@@ -3,9 +3,12 @@ package org.example.scheduleapp.schedule.service;
 import lombok.RequiredArgsConstructor;
 import org.example.scheduleapp.schedule.dto.SignUpRequestDto;
 import org.example.scheduleapp.schedule.dto.SignUpResponseDto;
+import org.example.scheduleapp.schedule.dto.UserResponseDto;
 import org.example.scheduleapp.schedule.entity.User;
 import org.example.scheduleapp.schedule.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -39,5 +42,21 @@ public class UserService {
 
         userRepository.deleteById(id);
 
+    }
+
+    public UserResponseDto findUser(Long id) {
+
+        //id로 유저 조회
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        //NPE 방지
+        if(optionalUser.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"id를 찾을 수 없습니다. :" + id);
+        }
+
+        //조회한 유저
+        User findUser = optionalUser.get();
+
+        return new UserResponseDto(findUser.getUserName(), findUser.getEmail(),findUser.getCreateDateTime());
     }
 }
