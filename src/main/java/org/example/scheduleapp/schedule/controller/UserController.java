@@ -1,9 +1,7 @@
 package org.example.scheduleapp.schedule.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.scheduleapp.schedule.dto.SignUpRequestDto;
-import org.example.scheduleapp.schedule.dto.SignUpResponseDto;
-import org.example.scheduleapp.schedule.dto.UserResponseDto;
+import org.example.scheduleapp.schedule.dto.*;
 import org.example.scheduleapp.schedule.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +36,18 @@ public class UserController {
 
         return new ResponseEntity<>(userResponseDto,HttpStatus.OK);
     }
+
+    /*
+    회원 수정(이름, 이메일)
+     */
+    @PatchMapping("/id/{id}")
+    public ResponseEntity<UserUpdateResponserDto> updateUser (@PathVariable Long id, @RequestBody UserUpdateRequestDto userUpdateRequestDto) {
+
+        UserUpdateResponserDto userUpdateResponserDto = userService.updateUser(id, userUpdateRequestDto);
+
+        return new ResponseEntity<>(userUpdateResponserDto,HttpStatus.CREATED);
+    }
+
 
     /*
     회원 삭제
