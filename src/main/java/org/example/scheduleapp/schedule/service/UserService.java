@@ -7,11 +7,15 @@ import org.example.scheduleapp.schedule.entity.User;
 import org.example.scheduleapp.schedule.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+
 
     /*
     회원 생성
@@ -25,6 +29,15 @@ public class UserService {
         User savedUser = userRepository.save(user);
 
         //SignUpResponseDto 형태로 응답하기
-        return new SignUpResponseDto(savedUser.getUserName(),savedUser.getEmail(),savedUser.getCreateDateTime());
+        return new SignUpResponseDto(savedUser.getId(), savedUser.getUserName(),savedUser.getEmail(),savedUser.getCreateDateTime());
+    }
+
+    /*
+    회원 삭제
+     */
+    public void deleteUser(Long id) {
+
+        userRepository.deleteById(id);
+
     }
 }
