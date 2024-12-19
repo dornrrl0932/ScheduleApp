@@ -8,12 +8,12 @@ import lombok.Getter;
 @Getter
 public class SignUpRequestDto {
 
-    private final String username;
+    private final String userName;
     private final String email;
     private final Long password;
 
-    public SignUpRequestDto(String username, String email, Long password) {
-        this.username = username;
+    public SignUpRequestDto(String userName, String email, Long password) {
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }

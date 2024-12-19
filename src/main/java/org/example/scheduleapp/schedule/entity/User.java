@@ -3,12 +3,14 @@ package org.example.scheduleapp.schedule.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDateTime;
 
 //유저명, 이메일, 작성일
 @Getter
 @Entity //데이터 베이스 테이블과 매핑, JPA Entity임을 선언
-@EntityListeners(AutoCloseable.class) // 자동으로 날짜를 기록
+@EntityListeners(AuditingEntityListener.class) // 자동으로 날짜를 기록
 public class User {
 
     @Id // 해당 필드를 기본키로 지정
